@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Agregar Pelicula</h2>
+<form class="">
+  <div class="form-group">
+    <label for="formGroupExampleInput">Codigo</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="Codigo"
+    />
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Titulo</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput2"
+      placeholder="Titulo"
+    />
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Protagonista</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="Protagonista"/>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Duracion</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="Duracion"/>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Resumen</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+<br>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Foto</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+  <br>
+  <select class="form-control form-control-sm" placeholder="Seleccione un Genero">
+     <option value="" disabled selected>Selecciona una opción</option>
+  <option>Accion</option>
+  <option>Terror</option>
+  <option>Animacion</option>
+</select>
+<button type="button" class="btn btn-primary">Guardar Pelicula</button> 
+<button type="button" class="btn btn-danger">Cancelar</button>
+<br>
+
+</form>
+{% endblock %}
