@@ -6,12 +6,24 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nombre Genero</th>
+      <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
+    {% for genero in generos %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ genero.nombre }}</td>
+      <td>
+        <a href="{{ url_for('deleteGenero', id=genero.id) }}" onclick="return confirm('¿Estás seguro de que quieres eliminar este género?');">Eliminar</a>
+        <a href="{{ url_for('editGenero', id=genero.id) }}">Editar</a>
+      </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="2" class="text-center">No hay géneros disponibles.</td>
+      </tr>
+      {% endfor %}
   </tbody>
 </table>
 {% endblock %}
