@@ -15,7 +15,7 @@
       <td>{{ loop.index }}</td>
       <td>{{ genero.nombre }}</td>
       <td>
-        <a href="{{ url_for('deleteGenero', id=genero.id) }}" onclick="return confirm('¿Estás seguro de que quieres eliminar este género?');">Eliminar</a>
+        <a href="{{ url_for('deleteGenero', id=genero.id) }}" onclick=" return confirm('¿Estás seguro de que quieres eliminar este género?');">Eliminar</a>
         <a href="{{ url_for('editGenero', id=genero.id) }}">Editar</a>
       </td>
       </tr>
