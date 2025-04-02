@@ -28,7 +28,9 @@
         <a class="nav-link" href="/agregarpelicula">Agregar Pelicula</a>
       </li>
       <li>
-        <a  class="nav-link" href="/logout">Cerrar Sesion</a>
+        <form action="{{ url_for('logout') }}" method="get">
+          <button type="submit">Cerrar sesión</button>
+        </form>
       </li>
     </ul>
   </div>

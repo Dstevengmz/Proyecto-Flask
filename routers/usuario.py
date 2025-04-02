@@ -12,15 +12,12 @@ def registrar():
         password = data.get('password')
         nombre = data.get('nombre')
         correo = data.get('correo')
-
         if Usuario.objects(usuario=usuario).first():
             flash('El nombre de usuario ya está registrado', 'error')
             return redirect(url_for('register'))
-
         if Usuario.objects(correo=correo).first():
             flash('El correo ya está registrado', 'error')
             return redirect(url_for('register'))
-
         nuevo_usuario = Usuario(
             usuario=usuario,
             password=generate_password_hash(password),
@@ -28,8 +25,6 @@ def registrar():
             correo=correo
         )
         nuevo_usuario.save()
-
         flash('¡Usuario registrado exitosamente!', 'success')
         return redirect(url_for('login'))  
-
     return render_template('registrar.html')

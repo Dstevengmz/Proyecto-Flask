@@ -4,12 +4,14 @@ from models.genero import Genero
 from werkzeug.utils import secure_filename
 from flask import jsonify
 from app import app
-@app.route('/')
+@app.route('/peliculas')
 def index():
     return render_template('index.html')
 
 @app.route("/listapelicula/",methods=['GET'])
 def listPelicula():
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     try:
         mensaje=None
         peliculas=Pelicula.objects()
@@ -20,17 +22,16 @@ def listPelicula():
     
 @app.route("/agregarpelicula/", methods=['GET', 'POST'])
 def addPelicula():
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     try:
         mensaje = None
         estado = False
         generos = Genero.objects() 
-
         if request.method == 'POST':
             datos = request.json
             genero_id = datos.get('genero')
-
             genero = Genero.objects(id=genero_id).first()
-
             if genero:
                 pelicula = Pelicula(
                     codigo=datos.get('codigo'),
@@ -48,17 +49,15 @@ def addPelicula():
                 mensaje = "Género no encontrado"
         else:
             mensaje = "Método no permitido"
-
     except Exception as e:
         mensaje = f"Error: {str(e)}"
-
     return render_template('agregarpelicula.html', estado=estado, mensaje=mensaje, generos=generos)
 
 
 @app.route("/eliminarpelicula/<id>", methods=['GET'])
 def deletePelicula(id):
-    # if 'usuario_id' not in session:
-    #     return redirect(url_for('login'))
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     try:
         pelicula = Pelicula.objects(id=id).first()
     
@@ -73,8 +72,8 @@ def deletePelicula(id):
 
 @app.route("/editarpelicula/<id>", methods=['GET'])
 def editPelicula(id):
-    # if 'usuario_id' not in session:
-    #     return redirect(url_for('login'))
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     pelicula = Pelicula.objects(id=id).first()
     if not pelicula:
         return redirect(url_for('listPelicula'))
@@ -84,6 +83,8 @@ def editPelicula(id):
 
 @app.route("/editarpelicula/<id>", methods=['POST'])
 def updatePelicula(id):
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     pelicula = Pelicula.objects(id=id).first()
     if not pelicula:
         return redirect(url_for('listPelicula'))

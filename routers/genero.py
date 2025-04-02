@@ -4,8 +4,8 @@ from app import app
 
 @app.route("/listargenero/",methods=['GET'])
 def listGenero():
-    # if 'usuario' not in session:
-    #     return redirect(url_for('login'))
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     try:
         mensaje=None
         generos=Genero.objects()
@@ -15,8 +15,8 @@ def listGenero():
     
 @app.route("/agregargenero/",methods=['GET', 'POST'])
 def addGenero():
-    # if 'usuario' not in session:
-    #     return redirect(url_for('login'))
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     try:
         mensaje=None
         estado=False
@@ -35,11 +35,10 @@ def addGenero():
 
 @app.route("/eliminargenero/<id>", methods=['GET'])
 def deleteGenero(id):
-    # if 'usuario_id' not in session:
-    #     return redirect(url_for('login'))
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     try:
         genero = Genero.objects(id=id).first()
-    
         if genero:
             genero.delete()
         else:
@@ -51,8 +50,8 @@ def deleteGenero(id):
 
 @app.route("/editargenero/<id>", methods=['GET'])
 def editGenero(id):
-    # if 'usuario_id' not in session:
-    #     return redirect(url_for('login'))
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     genero = Genero.objects(id=id).first()
     if not genero:
         return redirect(url_for('listGenero')) 
@@ -61,8 +60,8 @@ def editGenero(id):
 
 @app.route("/editargenero/<id>", methods=['POST'])
 def updateGenero(id):
-    # if 'usuario_id' not in session:
-    #     return redirect(url_for('login'))
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     genero = Genero.objects(id=id).first()
     if not genero:
         return redirect(url_for('listGenero')) 

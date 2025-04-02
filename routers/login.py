@@ -5,9 +5,8 @@ from models.usuario import Usuario
 import app as dbase
 
 
-
 # Ruta de Login
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         usuario_input = request.form['usuario']
@@ -16,12 +15,11 @@ def login():
         if usuario_db and check_password_hash(usuario_db.password, contrasena_input):
             session['usuario_id'] = str(usuario_db.id)
             session.permanent = True
-            flash('¡Inicio de sesión exitoso!', 'success')
+            flash('Inicio sesion correcto', 'success')
             return redirect(url_for('index'))
         else:
             flash('Credenciales incorrectas. Intenta nuevamente.', 'error')
-            return redirect(url_for('login'))
-
+            return redirect(url_for('index'))
     return render_template('login.html')
 
 #cerrar sesión

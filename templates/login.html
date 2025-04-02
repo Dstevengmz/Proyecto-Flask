@@ -4,9 +4,9 @@
 {% block content %}
 <div class="container">
     <h2>Iniciar sesion</h2>
-    <form method="POST" action="/login">
+    <form method="POST" action="/">
         <input type="text" name="usuario" placeholder="Usuario" required><br><br>
-        <input type="password" name="clave" placeholder="Contraseña" required><br><br>
+        <input type="password" name="clave" placeholder="Contraseña" required><div><form>
         <button type="submit">Entrar</button>
     </form>
     {% with mensajes = get_flashed_messages() %}
