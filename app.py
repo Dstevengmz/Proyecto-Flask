@@ -21,9 +21,10 @@ app.config["MONGODB_SETTINGS"] = [{
 
 db = MongoEngine(app)
 
+from routers.genero import *
+from routers.pelicula import * 
+from routers.login import * 
+from routers.usuario import * 
+
 if __name__ == "__main__":
-    from routers.genero import *
-    from routers.pelicula import * 
-    from routers.login import * 
-    from routers.usuario import * 
     app.run(port=6510, host="0.0.0.0", debug=True)
