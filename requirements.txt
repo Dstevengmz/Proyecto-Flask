@@ -6,10 +6,12 @@ dotenv==0.9.9
 Flask==3.1.0
 flask-cors==5.0.1
 flask-mongoengine @ git+https://github.com/idoshr/flask-mongoengine.git@e244408acf440c4208f7ddcd6e5d819cb472e4da
+gunicorn==23.0.0
 itsdangerous==2.2.0
 Jinja2==3.1.6
 MarkupSafe==3.0.2
 mongoengine==0.29.1
+packaging==24.2
 pymongo==4.11.3
 python-dotenv==1.1.0
 Werkzeug==3.1.3
