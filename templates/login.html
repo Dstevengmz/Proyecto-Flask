@@ -8,9 +8,9 @@
         <input type="text" name="usuario" placeholder="Usuario" required><br><br>
         <input type="password" name="clave" placeholder="Contraseña" required><div><form>
             <div class="g-recaptcha" data-sitekey="6LenzQ8rAAAAAFjHnby0KXxZ0O45kEHRj49DHQXG"></div><br>
-
             <button type="submit">Entrar</button>
     </form>
+    <p>Recuperar contraseña <a href="/recuperar">Aqui</a> </p>
     {% with mensajes = get_flashed_messages() %}
         {% if mensajes %}
             <p style="color:red;">{{ mensajes[0] }}</p>

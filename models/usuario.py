@@ -5,6 +5,7 @@ class Usuario(Document):
     password = StringField(max_length=255, required=True)
     nombre = StringField(max_length=100, required=True)
     correo = StringField(max_length=100, required=True, unique=True)
+    token = StringField() 
 
     def __repr__(self):
         return self.usuario

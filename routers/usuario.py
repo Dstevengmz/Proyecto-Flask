@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, url_for, flash
 from models.usuario import Usuario
 from werkzeug.security import generate_password_hash
 from app import app
+from correo import enviar_correo_asincrono
 
 @app.route('/registrar/', methods=['GET', 'POST'])
 def registrar():
@@ -25,5 +26,9 @@ def registrar():
         )
         nuevo_usuario.save()
         flash('¡Usuario registrado exitosamente!', 'success')
+        correo_destino = nuevo_usuario.correo
+        asunto = "Bienvenido al sistema"
+        mensaje ="Cuenta creada exitosamente"
+        enviar_correo_asincrono(correo_destino, asunto, mensaje)
         return redirect(url_for('login'))  
     return render_template('registrar.html')

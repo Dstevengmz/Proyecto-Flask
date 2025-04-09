@@ -4,7 +4,7 @@ from app import app
 from models.usuario import Usuario 
 import app as dbase
 import requests
-
+from correo import enviar_correo_asincrono
 
 # Ruta de Login
 @app.route('/', methods=['GET', 'POST'])
@@ -27,6 +27,11 @@ def login():
             session['usuario_id'] = str(usuario_db.id)
             session.permanent = True
             flash('Inicio sesion correcto', 'success')
+
+            correo_destino = usuario_db.correo
+            asunto = "Inicio de sesión exitoso"
+            mensaje = "iniciado sesion correctamente"
+            enviar_correo_asincrono(correo_destino, asunto, mensaje)
             return redirect(url_for('index'))
         else:
             flash('Credenciales incorrectas. Intenta nuevamente.', 'error')
