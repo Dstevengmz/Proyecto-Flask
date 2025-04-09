@@ -3,10 +3,9 @@ from models.usuario import Usuario
 from werkzeug.security import generate_password_hash
 from app import app
 
-@app.route('/registrar', methods=['GET', 'POST'])
+@app.route('/registrar/', methods=['GET', 'POST'])
 def registrar():
     if request.method == 'POST':
-        
         data = request.get_json() 
         usuario = data.get('usuario')
         password = data.get('password')

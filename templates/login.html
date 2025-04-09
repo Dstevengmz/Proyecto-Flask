@@ -7,7 +7,9 @@
     <form method="POST" action="/">
         <input type="text" name="usuario" placeholder="Usuario" required><br><br>
         <input type="password" name="clave" placeholder="Contraseña" required><div><form>
-        <button type="submit">Entrar</button>
+            <div class="g-recaptcha" data-sitekey="6LenzQ8rAAAAAFjHnby0KXxZ0O45kEHRj49DHQXG"></div><br>
+
+            <button type="submit">Entrar</button>
     </form>
     {% with mensajes = get_flashed_messages() %}
         {% if mensajes %}
@@ -15,5 +17,5 @@
         {% endif %}
     {% endwith %}
 </div>
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
